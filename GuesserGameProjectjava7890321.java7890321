@@ -1,0 +1,106 @@
+package MyProjectPackages;
+
+import java.util.Scanner;
+
+class Guesser {
+    int guesserNum;
+    
+    public int takeNumberGuesser() {
+        System.out.println("Guesser, guess a number:");
+        Scanner sc = new Scanner(System.in);
+        guesserNum = sc.nextInt();
+        return guesserNum;
+    }
+}
+
+class Player {
+    int playerNum;
+    
+    public int takeNumberPlayer() {
+        System.out.println("Player, guess a number:");
+        Scanner sc = new Scanner(System.in);
+        playerNum = sc.nextInt();
+        return playerNum;
+    }
+}
+
+class Umpire {
+    int numFromGuesser;
+    int numFromPlayer1;
+    int numFromPlayer2;
+    int numFromPlayer3;
+    
+    void collectFromGuesser() {
+        Guesser g = new Guesser();
+        numFromGuesser = g.takeNumberGuesser();
+    }    
+    
+    void collectFromPlayers() {
+        Player p1 = new Player();
+        numFromPlayer1 = p1.takeNumberPlayer();
+        
+        Player p2 = new Player();
+        numFromPlayer2 = p2.takeNumberPlayer();
+        
+        Player p3 = new Player();
+        numFromPlayer3 = p3.takeNumberPlayer();
+    }
+    
+    void compare() {
+        if (numFromPlayer1 == numFromGuesser && numFromPlayer2 == numFromGuesser && numFromPlayer3 == numFromGuesser) {
+            System.out.println("All players won the game.");
+        }
+        
+        else if (numFromPlayer1 == numFromGuesser && numFromPlayer2 == numFromGuesser) {
+            System.out.println("Only player 1 and player 2 won the game.");
+        } 
+        
+        else if (numFromPlayer1 == numFromGuesser && numFromPlayer3 == numFromGuesser) {
+            System.out.println("Only player 1 and player 3 won the game.");
+        } 
+        
+        else if (numFromPlayer2 == numFromGuesser && numFromPlayer3 == numFromGuesser) {
+            System.out.println("Only player 2 and player 3 won the game.");
+        } 
+        
+        else if (numFromPlayer1 == numFromGuesser) {
+            System.out.println("Only player 1 won the game.");
+        } 
+        
+        else if (numFromPlayer2 == numFromGuesser) {
+            System.out.println("Only player 2 won the game.");
+        } 
+        
+        else if (numFromPlayer3 == numFromGuesser) {
+            System.out.println("Only player 3 won the game.");
+        } 
+        
+        else {
+            System.out.println("No player won the game.");
+        }
+    }
+}
+
+public class GuesserGameProject {
+	
+    public static void main(String[] args) {
+    	
+        Umpire u = new Umpire();
+        
+        u.collectFromGuesser();
+        
+        u.collectFromPlayers();
+        
+        u.compare();
+    }
+}
+
+
+
+
+
+
+
+
+
+
